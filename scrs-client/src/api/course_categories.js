@@ -1,7 +1,7 @@
 import axios from "axios";
-import { getToken } from "."; // Adjust this import based on your auth token utility
-
-const BASE_URL = "/api/course-category";
+import { getToken } from ".";
+import { url } from ".";
+const BASE_URL = `${url}/api/course-category`;
 
 // Insert a single course category
 export const insertCourseCategory = async (courseCategory) => {

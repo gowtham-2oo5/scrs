@@ -1,9 +1,10 @@
 import axios from "axios";
 import { getToken } from ".";
+import { url } from ".";
 
 export const getAllFaculties = async () => {
   try {
-    const res = await axios.get(`/api/faculty`, {
+    const res = await axios.get(`${url}/api/faculty`, {
       headers: {
         Authorization: `Bearer ${getToken()}`,
       },
@@ -22,7 +23,7 @@ export const getAllFaculties = async () => {
 
 export const getFacultiesByDept = async (deptName) => {
   try {
-    const res = await axios.get(`/api/faculty/get-by-dept`, {
+    const res = await axios.get(`${url}/api/faculty/get-by-dept`, {
       params: {
         sn: deptName,
       },
@@ -44,7 +45,7 @@ export const getFacultiesByDept = async (deptName) => {
 
 export const getFacultyById = async (id) => {
   try {
-    const res = await axios.get(`/api/faculty/get-by-id?empId=${id}`, {
+    const res = await axios.get(`${url}/api/faculty/get-by-id?empId=${id}`, {
       headers: {
         Authorization: `Bearer ${getToken()}`,
       },
@@ -63,7 +64,7 @@ export const getFacultyById = async (id) => {
 
 export const createNewFaculty = async (formData) => {
   try {
-    const res = await axios.post(`/api/faculty/create`, formData, {
+    const res = await axios.post(`${url}/api/faculty/create`, formData, {
       headers: {
         Authorization: `Bearer ${getToken()}`,
         "Content-Type": "multipart/form-data",

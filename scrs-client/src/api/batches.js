@@ -1,9 +1,10 @@
 import axios from "axios";
 import { getToken } from ".";
+import { url } from ".";
 
 export const getAllBatches = async () => {
   try {
-    const res = await axios.get("/api/batch/get-all", {
+    const res = await axios.get(`${url}/api/batch/get-all`, {
       headers: {
         Authorization: `Bearer ${getToken()}`,
       },
@@ -22,7 +23,7 @@ export const getAllBatches = async () => {
 
 export const addSingleBatch = async (formData) => {
   try {
-    const res = await axios.post("/api/batch/insert-one", formData, {
+    const res = await axios.post(`${url}/api/batch/insert-one`, formData, {
       headers: {
         Authorization: `Bearer ${getToken()}`,
       },
@@ -41,7 +42,7 @@ export const addSingleBatch = async (formData) => {
 
 export const bulkUploadBatches = async (file) => {
   try {
-    const res = await axios.post("/api/batch/bulk-upload", file, {
+    const res = await axios.post(`${url}/api/batch/bulk-upload`, file, {
       headers: {
         Authorization: `Bearer ${getToken()}`,
         "Content-Type": "multipart/form-data",
@@ -61,7 +62,7 @@ export const bulkUploadBatches = async (file) => {
 
 export const deleteAllBatches = async () => {
   try {
-    const res = await axios.delete("/api/batch/del-all", {
+    const res = await axios.delete(`${url}/api/batch/del-all`, {
       headers: {
         Authorization: `Bearer ${getToken()}`,
       },
@@ -80,7 +81,7 @@ export const deleteAllBatches = async () => {
 
 export const deleteBatchById = async (id) => {
   try {
-    const res = await axios.delete(`/api/batch?id=${id}`, {
+    const res = await axios.delete(`${url}/api/batch?id=${id}`, {
       headers: {
         Authorization: `Bearer ${getToken()}`,
       },
@@ -99,11 +100,15 @@ export const deleteBatchById = async (id) => {
 
 export const updateBatchSem = async (batchName) => {
   try {
-    const res = await axios.put(`/api/batch/update-sems/${batchName}`, null, {
-      headers: {
-        Authorization: `Bearer ${getToken()}`,
-      },
-    });
+    const res = await axios.put(
+      `${url}/api/batch/update-sems/${batchName}`,
+      null,
+      {
+        headers: {
+          Authorization: `Bearer ${getToken()}`,
+        },
+      }
+    );
     return {
       data: res.data,
       status: res.status,

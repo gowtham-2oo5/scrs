@@ -1,10 +1,11 @@
 import axios from "axios";
 import { getToken } from ".";
+import { url } from ".";
 
 // Get all courses
 export const getAllCourses = async () => {
   try {
-    const res = await axios.get("/api/course/get-all", {
+    const res = await axios.get(`${url}/api/course/get-all`, {
       headers: {
         Authorization: `Bearer ${getToken()}`,
       },
@@ -24,7 +25,7 @@ export const getAllCourses = async () => {
 // Create a single course
 export const createCourse = async (formData) => {
   try {
-    const res = await axios.post("/api/course/create", formData, {
+    const res = await axios.post(`${url}/api/course/create`, formData, {
       headers: {
         Authorization: `Bearer ${getToken()}`,
       },
@@ -44,7 +45,7 @@ export const createCourse = async (formData) => {
 // Bulk upload courses
 export const bulkUploadCourses = async (file) => {
   try {
-    const res = await axios.post("/api/course/bulk-upload", file, {
+    const res = await axios.post(`${url}/api/course/bulk-upload`, file, {
       headers: {
         Authorization: `Bearer ${getToken()}`,
         "Content-Type": "multipart/form-data",
@@ -66,7 +67,7 @@ export const bulkUploadCourses = async (file) => {
 export const updateLTPS = async (id, L, T, P, S) => {
   try {
     const res = await axios.put(
-      `/api/course/update-ltps?id=${id}&L=${L}&T=${T}&P=${P}&S=${S}`,
+      `${url}/api/course/update-ltps?id=${id}&L=${L}&T=${T}&P=${P}&S=${S}`,
       {},
       {
         headers: {
@@ -90,7 +91,7 @@ export const updateLTPS = async (id, L, T, P, S) => {
 export const updateCourseIncharge = async (id, empId) => {
   try {
     const res = await axios.patch(
-      `/api/course/update-incharge?id=${id}&empId=${empId}`,
+      `${url}/api/course/update-incharge?id=${id}&empId=${empId}`,
       {},
       {
         headers: {
@@ -114,7 +115,7 @@ export const updateCourseIncharge = async (id, empId) => {
 export const updateCourseTitle = async (id, title) => {
   try {
     const res = await axios.patch(
-      `/api/course/update-title?id=${id}&title=${title}`,
+      `${url}/api/course/update-title?id=${id}&title=${title}`,
       {},
       {
         headers: {
@@ -137,7 +138,7 @@ export const updateCourseTitle = async (id, title) => {
 // Delete a course
 export const deleteCourse = async (id) => {
   try {
-    const res = await axios.delete(`/api/course/delete?id=${id}`, {
+    const res = await axios.delete(`${url}/api/course/delete?id=${id}`, {
       headers: {
         Authorization: `Bearer ${getToken()}`,
       },
@@ -157,11 +158,14 @@ export const deleteCourse = async (id) => {
 // Get target departments for a course
 export const getTargetDepartments = async (id) => {
   try {
-    const res = await axios.get(`/api/course/target-departments?id=${id}`, {
-      headers: {
-        Authorization: `Bearer ${getToken()}`,
-      },
-    });
+    const res = await axios.get(
+      `${url}/api/course/target-departments?id=${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${getToken()}`,
+        },
+      }
+    );
     return {
       data: res.data,
       status: res.status,
@@ -177,11 +181,14 @@ export const getTargetDepartments = async (id) => {
 // Get target specializations for a course
 export const getTargetSpecializations = async (id) => {
   try {
-    const res = await axios.get(`/api/course/target-specializations?id=${id}`, {
-      headers: {
-        Authorization: `Bearer ${getToken()}`,
-      },
-    });
+    const res = await axios.get(
+      `${url}/api/course/target-specializations?id=${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${getToken()}`,
+        },
+      }
+    );
     return {
       data: res.data,
       status: res.status,

@@ -1,12 +1,13 @@
 import axios from "axios";
 import { getToken } from ".";
+import { url } from ".";
 
 /**
  * Fetch all schedule templates.
  */
 export const getAllTemplates = async () => {
   try {
-    const res = await axios.get(`/api/template`, {
+    const res = await axios.get(`${url}/api/template`, {
       headers: {
         Authorization: `Bearer ${getToken()}`,
       },
@@ -29,7 +30,7 @@ export const getAllTemplates = async () => {
  */
 export const getTemplateById = async (id) => {
   try {
-    const res = await axios.get(`/api/template/get-template`, {
+    const res = await axios.get(`${url}/api/template/get-template`, {
       params: {
         id,
       },
@@ -55,7 +56,7 @@ export const getTemplateById = async (id) => {
  */
 export const createTemplate = async (tempDTO) => {
   try {
-    const res = await axios.post(`/api/template`, tempDTO, {
+    const res = await axios.post(`${url}/api/template`, tempDTO, {
       headers: {
         Authorization: `Bearer ${getToken()}`,
         "Content-Type": "application/json",

@@ -1,8 +1,8 @@
 import axios from "axios";
-
+import { url } from ".";
 export const loginUser = async (credentials) => {
   try {
-    const response = await axios.post(`/api/auth/login`, credentials);
+    const response = await axios.post(`${url}/api/auth/login`, credentials);
     return {
       data: response.data,
       status: response.status,
@@ -21,7 +21,7 @@ export const loginUser = async (credentials) => {
 
 export const verifyGivenOtp = async (otp) => {
   try {
-    const response = await axios.post(`/api/auth/verify-otp?otp=${otp}`);
+    const response = await axios.post(`${url}/api/auth/verify-otp?otp=${otp}`);
     return {
       data: response.data,
       status: response.status,

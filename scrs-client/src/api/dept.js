@@ -1,9 +1,10 @@
 import axios from "axios";
 import { getToken } from ".";
+import { url } from ".";
 
 export const getDepts = async () => {
   try {
-    const res = await axios.get("/api/dept/get-all", {
+    const res = await axios.get(`${url}/api/dept/get-all`, {
       headers: {
         Authorization: `Bearer ${getToken()}`,
       },
@@ -22,7 +23,7 @@ export const getDepts = async () => {
 
 export const addSingleDept = async (formData) => {
   try {
-    const res = await axios.post("/api/dept/insert-one", formData, {
+    const res = await axios.post(`${url}/api/dept/insert-one`, formData, {
       headers: {
         Authorization: `Bearer ${getToken()}`,
       },
@@ -41,7 +42,7 @@ export const addSingleDept = async (formData) => {
 
 export const bulkUploadDepts = async (file) => {
   try {
-    const res = await axios.post("/api/dept/bulk-upload", file, {
+    const res = await axios.post(`${url}/api/dept/bulk-upload`, file, {
       headers: {
         Authorization: `Bearer ${getToken()}`,
         "Content-Type": "multipart/form-data",
@@ -61,7 +62,7 @@ export const bulkUploadDepts = async (file) => {
 
 export const deleteDept = async (id) => {
   try {
-    const res = await axios.delete(`/api/dept?id=${id}`, {
+    const res = await axios.delete(`${url}/api/dept?id=${id}`, {
       headers: {
         Authorization: `Bearer ${getToken()}`,
       },
@@ -81,7 +82,7 @@ export const deleteDept = async (id) => {
 export const setHodForDept = async (sn, hodId) => {
   try {
     const res = await axios.put(
-      `/api/dept/set-hod?sn=${sn}&hodId=${hodId}`,
+      `${url}/api/dept/set-hod?sn=${sn}&hodId=${hodId}`,
       {},
       {
         headers: {
