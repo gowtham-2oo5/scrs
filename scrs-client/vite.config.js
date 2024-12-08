@@ -6,7 +6,11 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/api": "https://scrs-server-production.up.railway.app",
+      "/api": {
+        target: "https://scrs-server-production.up.railway.app",
+        changeOrigin: true,
+        secure: true,
+      },
     },
   },
   resolve: {
